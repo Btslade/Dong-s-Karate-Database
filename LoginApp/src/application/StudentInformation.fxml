@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentInformationController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="4.0" prefHeight="39.0" prefWidth="112.0" text="Student Information" />
       <TextField layoutX="14.0" layoutY="53.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by first name" />
@@ -24,6 +24,6 @@
       </TableView>
       <Button layoutX="14.0" layoutY="312.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" text="Eligible To Test Search" />
       <Button layoutX="57.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Search" />
-      <Button layoutX="57.0" layoutY="586.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Back" />
+      <Button layoutX="57.0" layoutY="586.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="112.0" text="Back" />
    </children>
 </Pane>
