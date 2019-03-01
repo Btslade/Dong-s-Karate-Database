@@ -6,16 +6,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Student {
-	private final IntegerProperty iD;
-	private final StringProperty firstName;
-	private final StringProperty lastName;
-	private final StringProperty guardianName;
-	private final IntegerProperty age;
-	private final StringProperty testingDate;
-	private final IntegerProperty attendance;
-	private final SimpleStringProperty adress;
-	private final StringProperty phoneNumber;
-	private final StringProperty email;
+	public SimpleIntegerProperty iD;
+	public SimpleStringProperty firstName;
+	public SimpleStringProperty lastName;
+	public SimpleStringProperty guardianName;
+	public SimpleIntegerProperty age;
+	public SimpleStringProperty testingDate;
+	public SimpleIntegerProperty attendance;
+	public SimpleStringProperty adress;
+	public SimpleStringProperty phoneNumber;
+	public SimpleStringProperty email;
 	
 	
 	public Student(int id, String fname, String lname, String guardian, int agee, String testingDate1, int attendance1, String adress1, String phoneNumber, String email1)
@@ -33,7 +33,6 @@ public class Student {
 		
 		
 	}
-
 
 	public IntegerProperty getiD() {
 		return iD;
