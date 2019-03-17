@@ -10,7 +10,7 @@ public class Student {
 	public SimpleStringProperty firstName;
 	public SimpleStringProperty lastName;
 	public SimpleStringProperty guardianName;
-	public SimpleIntegerProperty age;
+	public SimpleStringProperty age;
 	public SimpleStringProperty testingDate;
 	public SimpleIntegerProperty attendance;
 	public SimpleStringProperty adress;
@@ -18,13 +18,13 @@ public class Student {
 	public SimpleStringProperty email;
 	
 	
-	public Student(int id, String fname, String lname, String guardian, int agee, String testingDate1, int attendance1, String adress1, String phoneNumber, String email1)
+	public Student(int id, String fname, String lname, String guardian, String agee, String testingDate1, int attendance1, String adress1, String phoneNumber, String email1)
 	{
 		this.iD = new SimpleIntegerProperty(id);
 		this.firstName = new SimpleStringProperty(fname);
 		this.lastName = new SimpleStringProperty(lname);
 		this.guardianName = new SimpleStringProperty(guardian);
-		this.age = new SimpleIntegerProperty(agee);
+		this.age = new SimpleStringProperty(agee);
 		this.testingDate = new SimpleStringProperty(testingDate1);
 		this.attendance = new SimpleIntegerProperty(attendance1);
 		this.adress = new SimpleStringProperty(adress1);
@@ -70,10 +70,10 @@ public class Student {
 		this.guardianName.set(gName);
 	}
 
-	public IntegerProperty getAge() {
+	public StringProperty getAge() {
 		return age;
 	}
-	public void setAge(int newage)
+	public void setAge(String newage)
 	{
 		this.age.set(newage);
 	}

@@ -73,7 +73,7 @@ public class TakeAttendanceController implements  Initializable {
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next())
 				{
-					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 					/*Student student = new Student();
 					student.setID(rs.getInt(1));
 					student.setFirstName(rs.getString(2));
@@ -111,7 +111,7 @@ public class TakeAttendanceController implements  Initializable {
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next())
 				{
-					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 					/*Student student = new Student();
 					student.setID(rs.getInt(1));
 					student.setFirstName(rs.getString(2));
@@ -151,7 +151,7 @@ public class TakeAttendanceController implements  Initializable {
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next())
 				{
-					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 					/*Student student = new Student();
 					student.setID(rs.getInt(1));
 					student.setFirstName(rs.getString(2));
