@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddColorBeltController">
+   <children>
+      <Label layoutX="261.0" layoutY="14.0" text="Add Color Belt" />
+      <TextField fx:id="fName" layoutX="39.0" layoutY="63.0" promptText="First Name" />
+      <TextField fx:id="lName" layoutX="39.0" layoutY="123.0" promptText="Last Name" />
+      <TextField fx:id="guardian" layoutX="39.0" layoutY="188.0" promptText="Guardian" />
+      <TextField fx:id="age" layoutX="39.0" layoutY="251.0" promptText="Age" />
+      <TextField fx:id="address" layoutX="376.0" layoutY="63.0" promptText="address" />
+      <TextField fx:id="pNumber" layoutX="376.0" layoutY="123.0" promptText="phone number" />
+      <TextField fx:id="email" layoutX="376.0" layoutY="188.0" promptText="email" />
+      <TextField fx:id="beltColor" layoutX="376.0" layoutY="264.0" promptText="Belt Color" />
+      <Button fx:id="clearButton" layoutX="76.0" layoutY="328.0" mnemonicParsing="false" onAction="#clearForm" text="Clear Form" />
+      <Button fx:id="enterButton" layoutX="274.0" layoutY="328.0" mnemonicParsing="false" onAction="#addColorBeltStudent" text="Submit" />
+      <Text layoutX="377.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color Belt Specific Information" />
+      <Text fx:id="submitted" layoutX="446.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+   </children>
+</Pane>
