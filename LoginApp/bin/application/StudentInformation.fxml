@@ -8,23 +8,35 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="809.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentInformationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="735.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentInformationController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="349.0" layoutY="4.0" prefHeight="39.0" prefWidth="112.0" text="Student Information" />
-      <TextField layoutX="14.0" layoutY="53.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by first name" />
-      <TextField layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by last name" />
-      <TextField layoutX="14.0" layoutY="150.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by belt color" />
-      <TextField layoutX="14.0" layoutY="181.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by Degree (Black Belt)" />
-      <TextField layoutX="14.0" layoutY="213.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by stripe (little tiger)" />
-      <TableView layoutX="244.0" layoutY="43.0" prefHeight="600.0" prefWidth="559.0">
+      <TextField fx:id="firstname" layoutX="21.0" layoutY="547.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by first name" />
+      <TextField fx:id="lastname" layoutX="239.0" layoutY="547.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by last name" />
+      <TextField fx:id="colorbelt" layoutX="673.0" layoutY="547.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by belt color" />
+      <TextField fx:id="degree" layoutX="127.0" layoutY="586.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by Degree (Black Belt)" />
+      <TextField fx:id="beltstripe" layoutX="575.0" layoutY="586.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by stripe (little tiger)" />
+      <TableView fx:id="studentTable" layoutX="24.0" layoutY="70.0" prefHeight="477.0" prefWidth="875.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="First Name" />
-          <TableColumn prefWidth="75.0" text="Last Name" />
+          <TableColumn fx:id="firstName" prefWidth="88.0" text="First Name" />
+          <TableColumn fx:id="lastName" prefWidth="88.0" text="Last Name" />
+            <TableColumn fx:id="testingDate" text="Testing Date" />
+            <TableColumn fx:id="colorOfBelt" prefWidth="58.0" text="Color Belt" />
+            <TableColumn fx:id="degreeNum" prefWidth="45.0" text="Degree" />
+            <TableColumn fx:id="numOfStars" minWidth="0.0" prefWidth="34.0" text="Stars" />
+            <TableColumn fx:id="colorOfStripe" prefWidth="68.0" text="TigerStripe" />
+            <TableColumn fx:id="attendance" prefWidth="60.0" text="Attendance" />
+            <TableColumn fx:id="age" prefWidth="28.0" text="Age" />
+            <TableColumn fx:id="guardianName" prefWidth="59.0" text="Guardian" />
+            <TableColumn fx:id="address" prefWidth="84.0" text="Address" />
+            <TableColumn fx:id="phoneNumber" prefWidth="93.0" text="Phone" />
+            <TableColumn fx:id="email" prefWidth="89.0" text="Email" />
         </columns>
       </TableView>
-      <Button layoutX="14.0" layoutY="312.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" text="Eligible To Test Search" />
-      <Button layoutX="57.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Search" />
-      <Button layoutX="57.0" layoutY="586.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="112.0" text="Back" />
-      <DatePicker layoutX="14.0" layoutY="118.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by testing date" />
+      <Button layoutX="306.0" layoutY="659.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="210.0" text="Eligible To Test Search" />
+      <Button layoutX="349.0" layoutY="628.0" mnemonicParsing="false" onAction="#SearchDatabase" prefHeight="25.0" prefWidth="112.0" text="Search" />
+      <Button layoutX="349.0" layoutY="691.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="112.0" text="Back" />
+      <DatePicker fx:id="testingdate" layoutX="461.0" layoutY="547.0" prefHeight="25.0" prefWidth="197.0" promptText="Search by testing date" />
+      <TextField fx:id="numofstars" layoutX="367.0" layoutY="586.0" prefHeight="25.0" prefWidth="162.0" promptText="Star/Gup" />
    </children>
 </Pane>

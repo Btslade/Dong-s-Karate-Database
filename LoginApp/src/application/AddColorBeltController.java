@@ -67,24 +67,30 @@ public class AddColorBeltController implements Initializable  {
 			{
 			    try
 			    {
-				String sqlInsert = "INSERT INTO Students(fname, lname, guardian, age, testingDate, address, phoneNumber, email, attendance) VALUES (?,?,?,?,?,?,?,?,?)";
+				String sqlInsert = "INSERT INTO Students(fname, lname, guardian, age, testingDate, address, phoneNumber, email, attendance, BeltColor, degree, numOfStars, beltStripeColor) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement statement = conn.prepareStatement(sqlInsert);
 				
 				statement.setString(1, this.firstname.getText());
 				statement.setString(2, this.lastname.getText());
 				statement.setString(3, this.guardianname.getText());
-				statement.setString(4, this.age.getText());
+				statement.setInt(4, Integer.parseInt(this.age.getText()));
 				statement.setString(5, this.predictedTestingDate.getEditor().getText());
 				statement.setString(6, this.address.getText());
 				statement.setString(7, this.phoneNumber.getText());
 				statement.setString(8, this.email.getText());
 				statement.setInt(9, 0);
+				statement.setString(10, this.colorBelt.getText());
+				statement.setInt(11, 0);
+				statement.setInt(12, 0);
+				statement.setString(13, "N/A");
 				statement.execute();
 				//conn.close();
 				
 				
-				String getId = "SELECT * FROM Students WHERE fname = ? and lname = ?";
+			
+				
+				/*String getId = "SELECT * FROM Students WHERE fname = ? and lname = ?";
 				//Connection conn1 = db.Connector();
 				//PreparedStatement statement1 = conn1.prepareStatement(getId);
 				PreparedStatement statement1 = conn.prepareStatement(getId);
@@ -96,8 +102,8 @@ public class AddColorBeltController implements Initializable  {
 				ResultSet rs = statement1.executeQuery();
 				while(rs.next())
 				{
-					Student joe = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10));
-					idSaver = joe.getiD().getValue();
+					Student joe = new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), "", 0, 0, "");
+					idSaver = joe.getId();
 				}
 				//conn1.close();
 				
@@ -112,7 +118,7 @@ public class AddColorBeltController implements Initializable  {
 				statement2.execute();
 				conn.close();
 				//conn1.close();
-				//conn2.close();
+				//conn2.close();*/
 				
 			}catch (SQLException e)
 			{

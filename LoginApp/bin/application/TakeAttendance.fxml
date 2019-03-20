@@ -11,18 +11,19 @@
    <children>
       <Label fx:id="welcomeAttendence" alignment="CENTER" layoutX="272.0" layoutY="14.0" prefHeight="29.0" prefWidth="201.0" text="Attendance " />
       <Button layoutX="595.0" layoutY="537.0" mnemonicParsing="false" onAction="#goBack" prefHeight="36.0" prefWidth="59.0" text="Back" />
-      <TableView fx:id="studentTable" layoutX="243.0" layoutY="43.0" prefHeight="376.0" prefWidth="452.0">
+      <TableView fx:id="studentTable" layoutX="204.0" layoutY="43.0" prefHeight="410.0" prefWidth="491.0">
         <columns>
           <TableColumn fx:id="firstName" prefWidth="75.0" text="First Name" />
           <TableColumn fx:id="lastName" prefWidth="75.0" text="Last Name" />
             <TableColumn fx:id="attendance" prefWidth="75.0" text="Attendance" />
+            <TableColumn fx:id="testingDate" prefWidth="98.0" text="Testing Date" />
         </columns>
       </TableView>
       <TextField fx:id="firstname" layoutX="28.0" layoutY="50.0" promptText="First Name" />
       <TextField fx:id="lastname" layoutX="28.0" layoutY="85.0" promptText="Last Name" />
       <Button layoutX="28.0" layoutY="110.0" mnemonicParsing="false" onAction="#SearchStudentData" prefHeight="25.0" prefWidth="149.0" text="Search" />
       <Button layoutX="28.0" layoutY="147.0" mnemonicParsing="false" onAction="#clearForm" prefHeight="25.0" prefWidth="149.0" text="Clear Form" />
-      <Button layoutX="251.0" layoutY="434.0" mnemonicParsing="false" onAction="#takeAttendance" prefHeight="25.0" prefWidth="131.0" text="Take Attendance" />
-      <Button layoutX="502.0" layoutY="434.0" mnemonicParsing="false" onAction="#removeAttendance" text="Remove Attendance" />
+      <Button layoutX="204.0" layoutY="472.0" mnemonicParsing="false" onAction="#takeAttendance" prefHeight="25.0" prefWidth="131.0" text="Take Attendance" />
+      <Button layoutX="547.0" layoutY="472.0" mnemonicParsing="false" onAction="#removeAttendance" text="Remove Attendance" />
    </children>
 </Pane>
