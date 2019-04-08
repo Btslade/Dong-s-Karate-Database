@@ -50,7 +50,6 @@ public class AddBlackBeltController implements Initializable {
 	@FXML
 	private void addColorBeltStudent(ActionEvent event1)
 	{
-		int idSaver = 0;
 		try
 		{
 			//////SEARCH TO SEE IF THEY MATCH

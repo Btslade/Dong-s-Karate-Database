@@ -16,16 +16,13 @@ public class Student {
 	public SimpleStringProperty adress;
 	public SimpleStringProperty phoneNumber;
 	public SimpleStringProperty email;
-	////Color belt specific
 	public SimpleStringProperty colorOfBelt;
-	////Black Belt Specific
 	public SimpleIntegerProperty degreeNum;
 	public SimpleIntegerProperty starNum;
-	/////Little Tiger
 	public SimpleStringProperty colorOfStripe;
 	
 	
-	public Student(int id, String fname, String lname, String guardian, int agee, String testingDate1, int attendance1, String adress1, String phoneNumber, String email1, String colorr, int dgree, int starNum, String stripeColor)
+	public Student(int id, String fname, String lname, String guardian, int agee, String testingDate1, int attendance1, String adress1, String phoneNumber, String email1, String colorr, int dgree, int starNUm, String stripeColor)
 	{
 		this.iD = new SimpleIntegerProperty(id);
 		this.firstName = new SimpleStringProperty(fname);
@@ -39,12 +36,16 @@ public class Student {
 		this.email = new SimpleStringProperty(email1);
 		this.colorOfBelt = new SimpleStringProperty(colorr);
 		this.degreeNum = new SimpleIntegerProperty(dgree);
-		this.starNum = new SimpleIntegerProperty(starNum);
+		this.starNum = new SimpleIntegerProperty(starNUm);
 		this.colorOfStripe = new SimpleStringProperty(stripeColor);
 		
 		
+		
 	}
-
+	public Student()
+	{
+		
+	}
 	
 //////////////////////////ID///////////////////////////////	
 	public IntegerProperty getiDProperty() 
@@ -218,11 +219,11 @@ public class Student {
 	}
 ////////////////////////////////////////////////////////////////////////
 //////////////////////////BELT COLOR
-	public StringProperty getBeltColorProperty()
+	public StringProperty colorOfBeltProperty()
 	{
-		return this.colorOfBelt;
+		return colorOfBelt;
 	}
-	public String getBeltColor()
+	public String getcolorOfBelt()
 	{
 		return this.colorOfBelt.get();
 	}
@@ -233,9 +234,9 @@ public class Student {
 	
 	
 ////////////////////////DEGREE
-	public IntegerProperty getDegreeProperty()
+	public IntegerProperty degreeNumProperty()
 	{
-		return this.degreeNum;
+		return degreeNum;
 	}
 	public int getDegree()
 	{
@@ -246,9 +247,9 @@ public class Student {
 		this.degreeNum.set(dgree);
 	}
 ////////////////////////STARS
-	public IntegerProperty getStarProperty()
+	public IntegerProperty starNumProperty()
 	{
-		return this.starNum;
+		return starNum;
 	}
 	public int getStars()
 	{
@@ -260,9 +261,9 @@ public class Student {
 	}
 	
 /////////////STRIPE
-	public StringProperty getStripeColorProperty()
+	public StringProperty colorOfStripeProperty()
 	{
-		return this.colorOfStripe;
+		return colorOfStripe;
 	}
 	public String getStripeColor()
 	{
@@ -272,6 +273,7 @@ public class Student {
 	{
 		this.colorOfStripe.set(stripeColor);
 	}
+	
 	
 	
 

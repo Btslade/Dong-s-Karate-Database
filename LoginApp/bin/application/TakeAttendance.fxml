@@ -17,6 +17,7 @@
           <TableColumn fx:id="lastName" prefWidth="75.0" text="Last Name" />
             <TableColumn fx:id="attendance" prefWidth="75.0" text="Attendance" />
             <TableColumn fx:id="testingDate" prefWidth="98.0" text="Testing Date" />
+            <TableColumn fx:id="beltColor" prefWidth="75.0" text="Belt Color" />
         </columns>
       </TableView>
       <TextField fx:id="firstname" layoutX="28.0" layoutY="50.0" promptText="First Name" />

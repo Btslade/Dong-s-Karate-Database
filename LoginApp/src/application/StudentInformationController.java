@@ -20,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -41,24 +42,12 @@ public class StudentInformationController implements Initializable {
 	private TextField beltstripe;
 	@FXML
 	private TableView<Student> studentTable;
-	
-	
-	
-	
 	@FXML
 	private TableColumn<Student, String> firstName;
 	@FXML
 	private TableColumn<Student, String> lastName;
 	@FXML
 	private TableColumn<Student, String> testingDate;
-	@FXML
-	private TableColumn<Student, String> colorOfBelt;
-	@FXML
-	private TableColumn<Student, Integer> degreeNum;
-	@FXML
-	private TableColumn<Student, Integer> numOfStars;
-	@FXML
-	private TableColumn<Student, String> colorOfStripe;
 	@FXML
 	private TableColumn<Student, Integer> attendance;
 	@FXML
@@ -71,18 +60,50 @@ public class StudentInformationController implements Initializable {
 	private TableColumn<Student, String> phoneNumber;
 	@FXML
 	private TableColumn<Student, String> email;
+	@FXML
+	private TableColumn<Student, String> colorOfBelt;
+	@FXML
+	private TableColumn<Student, Integer> degreeNum;
+	@FXML
+	private TableColumn<Student, Integer> starNum;
+	@FXML
+	private TableColumn<Student, String> colorOfStripe;
+	@FXML
 	private SqliteConnection db;
+	@FXML
 	private ObservableList<Student> data;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+		studentTable.setEditable(true);
+		firstName.setCellFactory(TextFieldTableCell.forTableColumn());
 		
 	}
 		
-	
+	@FXML
+	public void onfNameChanged(TableColumn.CellEditEvent<Student, String> studentStringCellEditEvent)
+	{
+		try
+		{
+			Connection conn = SqliteConnection.Connector();
+			Student student = studentTable.getSelectionModel().getSelectedItem();
+			student.setFirstName(studentStringCellEditEvent.getNewValue());
+			String sqlFNameUpdate = "UPDATE Students SET fname = ? WHERE fname = ? AND lname = ? AND age = ?";
+	        PreparedStatement preparedStatement = conn.prepareStatement(sqlFNameUpdate);
+	        preparedStatement.setString(1, studentStringCellEditEvent.getNewValue());
+	        preparedStatement.setString(2, this.studentTable.getSelectionModel().getSelectedItem().getFirstName());
+	        System.out.println(this.studentTable.getSelectionModel().getSelectedItem().getFirstName());
+	        preparedStatement.setString(3, this.studentTable.getSelectionModel().getSelectedItem().getLastName());
+	        preparedStatement.setInt(4, this.studentTable.getSelectionModel().getSelectedItem().getAge());
+	        preparedStatement.execute();
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
 	
 	@FXML
 	public void SearchDatabase(ActionEvent event0)
@@ -118,6 +139,7 @@ public class StudentInformationController implements Initializable {
 					student.setPhoneNumber(rs.getString(9));
 					student.setEmail(rs.getString(10));*/
 				}
+				rs.close();
 				conn.close();
 			}catch(SQLException e)
 			{
@@ -127,22 +149,62 @@ public class StudentInformationController implements Initializable {
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
 			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
-			this.colorOfBelt.setCellValueFactory(new PropertyValueFactory <Student, String>("colorOfBelt"));
-			this.degreeNum.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("degreeNum"));
-			this.numOfStars.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("numOfStars"));
-			this.colorOfStripe.setCellValueFactory(new PropertyValueFactory <Student, String>("colorOfStripe"));
-			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer>("attendance"));
-			this.age.setCellValueFactory(new PropertyValueFactory <Student, Integer>("age"));
+			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
+			this.age.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("age"));
 			this.guardianName.setCellValueFactory(new PropertyValueFactory <Student, String> ("guardianName"));
 			this.address.setCellValueFactory(new PropertyValueFactory <Student, String> ("adress"));
-			this.phoneNumber.setCellValueFactory(new PropertyValueFactory <Student, String>("phoneNumber"));
-			this.email.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
+			this.phoneNumber.setCellValueFactory(new PropertyValueFactory <Student, String> ("phoneNumber"));
+			this.email.setCellValueFactory(new PropertyValueFactory <Student, String> ("email"));
+			this.colorOfBelt.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
+			this.degreeNum.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("degreeNum"));
+			this.starNum.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("starNum"));
+			this.colorOfStripe.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfStripe"));
 			this.studentTable.setItems(this.data);
 					
 	}
+	
+	
+	
+	
+	
+	@FXML
 	public void SearchByEligibility(ActionEvent event2)
 	{
-		String sqlSearch = "SELECT * FROM Students WHERE attendance > 18";
+		try
+		{
+			Connection conn = SqliteConnection.Connector();
+			this.data = FXCollections.observableArrayList();
+
+			String sqlSearch = "SELECT * FROM Students WHERE attendance > 18";
+
+	            PreparedStatement preparedStatement = conn.prepareStatement(sqlSearch);
+				ResultSet rs = preparedStatement.executeQuery();
+				while(rs.next())
+				{
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13), rs.getString(14)));
+
+				}
+				//rs.close();
+				//conn.close();
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			this.firstName.setCellValueFactory(new PropertyValueFactory<Student, String> ("firstName"));
+			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
+			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
+			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer>("attendance"));
+			this.age.setCellValueFactory(new PropertyValueFactory<Student, Integer>("age"));
+			this.guardianName.setCellValueFactory(new PropertyValueFactory <Student, String> ("guardianName"));
+			this.address.setCellValueFactory(new PropertyValueFactory<Student, String> ("adress"));
+			this.phoneNumber.setCellValueFactory(new PropertyValueFactory<Student, String>("phoneNumber"));
+			this.email.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
+			this.colorOfBelt.setCellValueFactory(new PropertyValueFactory <Student, String>("colorOfBelt"));
+			this.degreeNum.setCellValueFactory(new PropertyValueFactory<Student, Integer> ("degreeNum"));
+			this.starNum.setCellValueFactory(new PropertyValueFactory<Student, Integer> ("starNum"));
+			this.colorOfStripe.setCellValueFactory(new PropertyValueFactory<Student, String>("colorOfStripe"));
+			this.studentTable.setItems(this.data);
 		
 	}
 	

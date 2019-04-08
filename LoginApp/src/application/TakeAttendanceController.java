@@ -42,8 +42,11 @@ public class TakeAttendanceController implements  Initializable {
 	private TableColumn<Student, Integer> attendance;
 	@FXML
 	private TableColumn<Student, String> testingDate;
-	
+	@FXML
+	private TableColumn<Student, String> beltColor;
+	@FXML
 	private SqliteConnection db;
+	@FXML
 	private ObservableList<Student> data;
 	
 	
@@ -96,6 +99,7 @@ public class TakeAttendanceController implements  Initializable {
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
 			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.beltColor.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
 			this.studentTable.setItems(this.data);
 		}
 		
@@ -135,6 +139,7 @@ public class TakeAttendanceController implements  Initializable {
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
 			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.beltColor.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
 			this.studentTable.setItems(this.data);
 		}
 		
@@ -177,6 +182,7 @@ public class TakeAttendanceController implements  Initializable {
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
 			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.beltColor.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
 			this.studentTable.setItems(this.data);
 		}
 		
