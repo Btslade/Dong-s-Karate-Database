@@ -89,15 +89,21 @@ public class StudentInformationController implements Initializable {
 		{
 			Connection conn = SqliteConnection.Connector();
 			Student student = studentTable.getSelectionModel().getSelectedItem();
+			String oldFName = student.getFirstName();
 			student.setFirstName(studentStringCellEditEvent.getNewValue());
-			String sqlFNameUpdate = "UPDATE Students SET fname = ? WHERE fname = ? AND lname = ? AND age = ?";
+			String sqlFNameUpdate = "UPDATE Students SET fname = ? WHERE fname = ? AND lname = ? AND age = ? AND id = ?";
 	        PreparedStatement preparedStatement = conn.prepareStatement(sqlFNameUpdate);
 	        preparedStatement.setString(1, studentStringCellEditEvent.getNewValue());
-	        preparedStatement.setString(2, this.studentTable.getSelectionModel().getSelectedItem().getFirstName());
-	        System.out.println(this.studentTable.getSelectionModel().getSelectedItem().getFirstName());
+	        //System.out.println(studentStringCellEditEvent.getNewValue());
+	        preparedStatement.setString(2, oldFName);
+	        //System.out.println(oldFName);
 	        preparedStatement.setString(3, this.studentTable.getSelectionModel().getSelectedItem().getLastName());
+	        //System.out.println(this.studentTable.getSelectionModel().getSelectedItem().getLastName());
 	        preparedStatement.setInt(4, this.studentTable.getSelectionModel().getSelectedItem().getAge());
+	        //System.out.println(this.studentTable.getSelectionModel().getSelectedItem().getAge());
+	        preparedStatement.setInt(5, this.studentTable.getSelectionModel().getSelectedItem().getId());
 	        preparedStatement.execute();
+	        preparedStatement.close();
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
