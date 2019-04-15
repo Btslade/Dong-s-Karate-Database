@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -34,6 +35,7 @@ public class UserController implements Initializable{
 	{
 		try 
 		{
+		((Node)event1.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root;
@@ -54,6 +56,7 @@ public class UserController implements Initializable{
 	{
 		try
 		{
+		((Node)event2.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root;
@@ -74,6 +77,7 @@ public class UserController implements Initializable{
 	{
 		try
 		{
+		((Node)event3.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root;
@@ -90,10 +94,6 @@ public class UserController implements Initializable{
 		}
 	}
 	
-	public void close()
-	{
-		
-	}
 }
 
 

@@ -20,5 +20,6 @@
       <Button layoutX="52.0" layoutY="386.0" mnemonicParsing="false" onAction="#addColorBeltStudent" prefHeight="25.0" prefWidth="149.0" text="Add Student" />
       <Button layoutX="52.0" layoutY="420.0" mnemonicParsing="false" onAction="#clearForm" prefHeight="25.0" prefWidth="149.0" text="Clear Form" />
       <TextField fx:id="colorBelt" layoutX="52.0" layoutY="349.0" promptText="Belt Color" />
+      <Button layoutX="652.0" layoutY="463.0" mnemonicParsing="false" onAction="#goBack" prefHeight="51.0" prefWidth="98.0" text="Back" />
    </children>
 </Pane>

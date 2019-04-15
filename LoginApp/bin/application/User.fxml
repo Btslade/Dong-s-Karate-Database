@@ -7,9 +7,8 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserController">
    <children>
       <Label fx:id="userLbl" layoutX="263.0" layoutY="14.0" text="User welcome" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="44.0" layoutY="333.0" mnemonicParsing="false" onAction="#takeAttendance" prefHeight="38.0" prefWidth="114.0" text="Take Attendance" />
-      <Button layoutX="206.0" layoutY="333.0" mnemonicParsing="false" onAction="#studentInformation" prefHeight="38.0" prefWidth="94.0" text="Student info" />
-      <Button layoutX="337.0" layoutY="333.0" mnemonicParsing="false" onAction="#editDeleteCreateStudent" prefHeight="38.0" prefWidth="114.0" text="Edit/Create/Delete" />
-      <Button layoutX="483.0" layoutY="333.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="66.0" text="Close" />
+      <Button layoutX="44.0" layoutY="181.0" mnemonicParsing="false" onAction="#takeAttendance" prefHeight="38.0" prefWidth="114.0" text="Take Attendance" />
+      <Button layoutX="253.0" layoutY="181.0" mnemonicParsing="false" onAction="#studentInformation" prefHeight="38.0" prefWidth="94.0" text="Student info" />
+      <Button layoutX="443.0" layoutY="181.0" mnemonicParsing="false" onAction="#editDeleteCreateStudent" prefHeight="38.0" prefWidth="114.0" text="Create/Delete" />
    </children>
 </Pane>

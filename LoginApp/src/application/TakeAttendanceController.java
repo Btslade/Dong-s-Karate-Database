@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -40,8 +41,13 @@ public class TakeAttendanceController implements  Initializable {
 	private TableColumn<Student, String> lastName;
 	@FXML
 	private TableColumn<Student, Integer> attendance;
-	
+	@FXML
+	private TableColumn<Student, String> testingDate;
+	@FXML
+	private TableColumn<Student, String> beltColor;
+	@FXML
 	private SqliteConnection db;
+	@FXML
 	private ObservableList<Student> data;
 	
 	
@@ -57,9 +63,9 @@ public class TakeAttendanceController implements  Initializable {
 	@FXML
 	private void SearchStudentData(ActionEvent event1) throws SQLException
 	{
-		String sqlSearch = "SELECT* FROM Students WHERE fname = ? and lname = ?";
-		String sqlSearch1 = "SELECT* FROM Students WHERE fname = ?";
-		String sqlSearch2 = "SELECT* FROM Students WHERE lname =?";
+		String sqlSearch = "SELECT* FROM Students WHERE fname LIKE ? and lname LIKE ?";
+		String sqlSearch1 = "SELECT* FROM Students WHERE fname LIKE ?";
+		String sqlSearch2 = "SELECT* FROM Students WHERE lname LIKE ?";
 		
 		if(this.lastname.getText().equals(""))
 		{
@@ -69,11 +75,11 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlSearch1);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1, this.firstname.getText());
+				preparedStatement.setString(1, "%" + this.firstname.getText() + "%");
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next())
 				{
-					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13), rs.getString(14)));
 					/*Student student = new Student();
 					student.setID(rs.getInt(1));
 					student.setFirstName(rs.getString(2));
@@ -93,6 +99,8 @@ public class TakeAttendanceController implements  Initializable {
 			this.firstName.setCellValueFactory(new PropertyValueFactory<Student, String> ("firstName"));
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
+			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.beltColor.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
 			this.studentTable.setItems(this.data);
 		}
 		
@@ -107,11 +115,11 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlSearch2);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1,this.lastname.getText());
+				preparedStatement.setString(1,"%" + this.lastname.getText()+ "%");
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next())
 				{
-					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13), rs.getString(14)));
 					/*Student student = new Student();
 					student.setID(rs.getInt(1));
 					student.setFirstName(rs.getString(2));
@@ -131,6 +139,8 @@ public class TakeAttendanceController implements  Initializable {
 			this.firstName.setCellValueFactory(new PropertyValueFactory<Student, String> ("firstName"));
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
+			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.beltColor.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
 			this.studentTable.setItems(this.data);
 		}
 		
@@ -146,12 +156,13 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlSearch);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1, this.firstname.getText());
-				preparedStatement.setString(2,this.lastname.getText());
+				preparedStatement.setString(1, "%" + this.firstname.getText() + "%");
+				preparedStatement.setString(2, "%" + this.lastname.getText() + "%");
 				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next())
 				{
-					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10)));
+					this.data.add(new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12), rs.getInt(13), rs.getString(14)));
+
 					/*Student student = new Student();
 					student.setID(rs.getInt(1));
 					student.setFirstName(rs.getString(2));
@@ -171,6 +182,8 @@ public class TakeAttendanceController implements  Initializable {
 			this.firstName.setCellValueFactory(new PropertyValueFactory<Student, String> ("firstName"));
 			this.lastName.setCellValueFactory(new PropertyValueFactory <Student, String> ("lastName"));
 			this.attendance.setCellValueFactory(new PropertyValueFactory <Student, Integer> ("attendance"));
+			this.testingDate.setCellValueFactory(new PropertyValueFactory <Student, String> ("testingDate"));
+			this.beltColor.setCellValueFactory(new PropertyValueFactory <Student, String> ("colorOfBelt"));
 			this.studentTable.setItems(this.data);
 		}
 		
@@ -189,9 +202,9 @@ public class TakeAttendanceController implements  Initializable {
 	@FXML
 	private void takeAttendance(ActionEvent event2) throws SQLException
 	{
-		String sqlTakeAttendance = "UPDATE Students SET attendance = attendance + 1 WHERE fname = ? and lname = ?";
-		String sqlTakeAttendance1= "UPDATE Students SET attendance = attendance + 1 WHERE fname = ?";
-		String sqlTakeAttendance2= "UPDATE Students SET attendance = attendance + 1 WHERE lname = ?";
+		String sqlTakeAttendance = "UPDATE Students SET attendance = attendance + 1 WHERE fname LIKE ? and lname LIKE ?";
+		String sqlTakeAttendance1= "UPDATE Students SET attendance = attendance + 1 WHERE fname LIKE ?";
+		String sqlTakeAttendance2= "UPDATE Students SET attendance = attendance + 1 WHERE lname LIKE ?";
 		if(this.firstname.getText().equals(""))
 		{
 			try
@@ -200,7 +213,7 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlTakeAttendance2);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1,this.lastname.getText());
+				preparedStatement.setString(1,"%"+this.lastname.getText()+"%");
 				preparedStatement.execute();
 				SearchStudentData(event2);
 			
@@ -219,7 +232,7 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlTakeAttendance1);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1, this.firstname.getText());
+				preparedStatement.setString(1, "%" +this.firstname.getText()+ "%");
 				preparedStatement.execute();
 				SearchStudentData(event2);
 			
@@ -238,8 +251,8 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlTakeAttendance);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1,this.firstname.getText());
-				preparedStatement.setString(2, this.lastname.getText());
+				preparedStatement.setString(1, "%" + this.firstname.getText() + "%");
+				preparedStatement.setString(2, "%" + this.lastname.getText()+ "%");
 				preparedStatement.execute();
 				SearchStudentData(event2);
 			
@@ -255,9 +268,9 @@ public class TakeAttendanceController implements  Initializable {
 	@FXML
 	private void removeAttendance(ActionEvent event3) throws SQLException
 	{
-		String sqlRemoveAttendance = "UPDATE Students SET attendance = attendance + -1 WHERE fname = ? and lname = ?";
-		String sqlRemoveAttendance1 = "UPDATE Students SET attendance = attendance + -1 WHERE fname = ?";
-		String sqlRemoveAttendance2 = "UPDATE Students SET attendance = attendance + -1 WHERE lname = ?";
+		String sqlRemoveAttendance = "UPDATE Students SET attendance = attendance + -1 WHERE fname LIKE ? and lname LIKE ?";
+		String sqlRemoveAttendance1 = "UPDATE Students SET attendance = attendance + -1 WHERE fname LIKE ?";
+		String sqlRemoveAttendance2 = "UPDATE Students SET attendance = attendance + -1 WHERE lname LIKE ?";
 		if(this.firstname.getText().equals(""))
 		{
 			try
@@ -266,7 +279,7 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlRemoveAttendance2);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1,this.lastname.getText());
+				preparedStatement.setString(1, "%"+this.lastname.getText()+ "%");
 				preparedStatement.execute();
 				SearchStudentData(event3);
 			}catch(SQLException e)
@@ -282,7 +295,7 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlRemoveAttendance1);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1,this.firstname.getText());
+				preparedStatement.setString(1,"%"+this.firstname.getText()+"%");
 				preparedStatement.execute();
 				SearchStudentData(event3);
 			}catch(SQLException e)
@@ -298,8 +311,8 @@ public class TakeAttendanceController implements  Initializable {
 				Connection conn = SqliteConnection.Connector();
 				PreparedStatement preparedStatement = conn.prepareStatement(sqlRemoveAttendance);
 				this.data = FXCollections.observableArrayList();
-				preparedStatement.setString(1, this.firstname.getText());
-				preparedStatement.setString(2,this.lastname.getText());
+				preparedStatement.setString(1, "%"+this.firstname.getText()+"%");
+				preparedStatement.setString(2,"%"+ this.lastname.getText() + "%");
 				preparedStatement.execute();
 				SearchStudentData(event3);
 			}catch(SQLException e)
@@ -333,6 +346,7 @@ public class TakeAttendanceController implements  Initializable {
 	{
 		try 
 		{
+		((Node)event5.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root;

@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.*;
 
 public class LoginController implements Initializable 
 {
@@ -53,6 +54,7 @@ public class LoginController implements Initializable
 			if (loginModel.isLogin(txtUsername.getText(), txtPassword.getText()))
 			{
 				isConnected.setText("Username and Password is Correct!");
+				((Node)event.getSource()).getScene().getWindow().hide();
 				Stage primaryStage = new Stage();
 				FXMLLoader loader = new FXMLLoader();
 				Pane root = loader.load(getClass().getResource("/application/User.fxml").openStream());

@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ public class EditCreateDeleteController implements Initializable {
 	{
 		try 
 		{
+		((Node)event1.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
 		FXMLLoader loader = new FXMLLoader();
 		Pane root;
@@ -42,6 +44,7 @@ public class EditCreateDeleteController implements Initializable {
 	{
 		try
 		{
+			((Node)event2.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			Pane root;
@@ -57,16 +60,17 @@ public class EditCreateDeleteController implements Initializable {
 				e.printStackTrace();
 			}
 	}
-	public void editStudent(ActionEvent event3)
+	public void deleteStudent(ActionEvent event3)
 	{
 		try
 		{
+			((Node)event3.getSource()).getScene().getWindow().hide();
 			Stage primaryStage = new Stage();
 			FXMLLoader loader = new FXMLLoader();
 			Pane root;
 			
-				root = loader.load(getClass().getResource("/application/EditStudent.fxml").openStream());
-				EditStudentController editStudentController = (EditStudentController)loader.getController();
+				root = loader.load(getClass().getResource("/application/DeleteStudent.fxml").openStream());
+				DeleteStudentController deleteStudentController = (DeleteStudentController)loader.getController();
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 				primaryStage.setScene(scene);
@@ -77,4 +81,5 @@ public class EditCreateDeleteController implements Initializable {
 			}
 	}
 
+	
 }
